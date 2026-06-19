@@ -1,0 +1,8 @@
+takemeter-model/
+sample_data/
+*.pt
+*.safetensors
+*.ckpt
+*.bin
+__pycache__/
+.ipynb_checkpoints/

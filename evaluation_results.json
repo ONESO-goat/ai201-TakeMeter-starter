@@ -1,0 +1,25 @@
+{
+  "baseline_accuracy": 0.7667,
+  "finetuned_accuracy": 0.4667,
+  "improvement": -0.3,
+  "test_set_size": 30,
+  "label_map": {
+    "unsupported": {
+      "id": 0,
+      "reason": "No evidence given"
+    },
+    "weakly_supported": {
+      "id": 1,
+      "reason": "Evidence exists but doesn't fully justify the claim"
+    },
+    "well_supported": {
+      "id": 2,
+      "reason": "Evidence directly and sufficiently supports the claim"
+    },
+    "emotional": {
+      "id": 3,
+      "reason": "Primarily expresses feelings rather than making an argument"
+    }
+  },
+  "model": "distilbert-base-uncased"
+}
