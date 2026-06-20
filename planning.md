@@ -4,21 +4,21 @@
 
 ## Community Choice
 
-I am using **r/LetsTalkMusic** as my primary source.
+I am using **r/LetsTalkMusic**, and **r/AskReddit** as my primary sources, filtering post by the title **"Hot Take"**.
 
-This community is a strong fit because it contains a high volume of **music opinions, critiques, and debates** that naturally range from emotional reactions to structured arguments. This variation is necessary for training a model that figures the differences between emotional claims and evidence based reasoning. It also includes both casual listeners and more analytical users, which can increase label diversity and edge cases.
+These communites are strong fits because both contain a high volume of **opinions, critiques, and debates** that naturally range from emotional reactions to structured arguments. This variation is necessary for training a model that figures the differences between emotional claims and evidence based reasoning. It also includes both casual listeners and more analytical users, which can increase label diversity and edge cases.
 
 ---
 
 ## Labels
 
-The task is to classify music related takes based on the **level of reasoning and evidence supporting the claim**, not whether the opinion is positive or negative.
+The task is to classify music or sport related takes based on the **level of reasoning and evidence supporting the claim**, not whether the opinion is positive or negative.
 
 ### 1. emotional
 
 A post is labeled **emotional** if it primarily expresses feelings, insults, hype, or strong subjective reactions **without structured reasoning or evidence**.
 
-* Example 1: “This artist is complete trash.”
+* Example 1: “This player is a complete bum”
 * Example 2: “Rock is literally the greatest genre ever made.”
 
 **Note:** Even if the claim is extreme, it remains emotional unless it includes verifiable reasoning or structured support.
@@ -30,7 +30,7 @@ A post is labeled **emotional** if it primarily expresses feelings, insults, hyp
 A post is labeled **unsupported** if it makes a factual or semi-factual claim **without evidence, reasoning, or explanation**, even if the tone is calm.
 
 * Example 1: “Rock music is for depressed people.”
-* Example 2: “Billie Eilish fell off.”
+* Example 2: “Superhero movies killed cinema”
 
 **Note:** Unlike emotional posts, unsupported posts may sound neutral but still lack justification.
 
@@ -110,15 +110,15 @@ This hybrid handling is used only when separation is not reliable.
 
 ### Data Sources
 
-* r/LetsTalkMusic
-* r/rap and artist-specific subreddits
+* r/LetsTalkMusic, r/rap and artist specific subreddits
+* r/AskReddit filtering by post under "Hot Takes"
 * YouTube and TikTok comment sections on music-related content
 * Personal domain knowledge of music discourse
 
 ### Dataset Size
 
 * Target: **200+ labeled examples total**
-* Goal distribution: ~50 examples per label (balanced dataset)
+* Goal distribution: 50 examples per label (balanced dataset)
 
 ### Balancing Strategy
 
