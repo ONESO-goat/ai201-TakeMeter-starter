@@ -96,7 +96,7 @@ Model:
 * Sequence classification head
 * Four output classes
 
-Training summary:
+**Test 1** Training summary:
 
 | Epoch | Train Loss | Validation Loss | Validation Accuracy |
 | ----- | ---------- | --------------- | ------------------- |
@@ -104,7 +104,7 @@ Training summary:
 | 2     | 1.394      | 1.365           | 0.300               |
 | 3     | 1.365      | 1.319           | 0.533               |
 
-First test accuracy:
+**First** test accuracy:
 
 **53.3%**
 
@@ -121,8 +121,9 @@ The fine-tuned model underperformed the baseline by 30 percentage points.
 
 This represents a significant regression relative to the original goal of outperforming or matching the zero-shot classifier.
 
+---
 
-Final test accuracy:
+**Final** test accuracy:
 
 Training summary:
 
@@ -151,7 +152,7 @@ This represents a significant boost in success for the model.
 
 ---
 
-# Further down the README we will focus on the **first** test, this is for more insight
+# Further down the README we will focus on the **first** test, this is for more insight.
 
 ---
 
