@@ -99,8 +99,7 @@ The post includes emotional language (“trash lol”) but also includes factual
 
 * If emotional framing dominates → label **emotional**
 * If structured evidence is the main driver → label **weakly_supported** or **well_supported**
-* If both are equally strong → assign combined label string:
-  `"emotional + weakly_supported"`
+
 
 This hybrid handling is used only when separation is not reliable.
 
@@ -161,7 +160,7 @@ Baseline outputs will be collected on the same test set used for evaluation of t
 
 The classifier will be considered **good enough for deployment** if:
 
-* Overall accuracy ≥ **80%**
+* The final models accuracy ≥ **80%**
 * No single class has F1-score below **0.75**
 * Confusion between adjacent labels (unsupported ↔ weakly_supported) is significantly reduced compared to baseline
 * Model performs consistently on unseen subreddit data (not just training distribution)
