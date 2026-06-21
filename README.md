@@ -19,6 +19,7 @@ The goal was to determine whether supervised fine-tuning could outperform a stro
 ## Training Decisions
 
 The model was trained for the default of **3** epochs. Three epochs were selected because validation accuracy improved consistently through the third epoch while validation loss continued to decrease. Additional epochs were not used or avoided to reduce the risk of overfitting due to the small dataset of 200 examples.
+
 ---
 
 # Problem Definition
