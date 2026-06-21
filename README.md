@@ -98,6 +98,29 @@ Labeling focused on the distinction between:
 - claims with substantial evidence or multiple supporting points
 
 Borderline examples were reviewed multiple times and compared against the label definitions before a final label was assigned.
+
+---
+
+## Difficult Labeling Examples
+
+### Example 1
+“This artist is trash but they sold out arenas last year.”
+
+Label: weakly_supported  
+Reason: contains emotional language but also evidence.
+
+### Example 2
+“Billie Eilish fell off after her last album.”
+
+Label: unsupported  
+Reason: factual sounding claim but no supporting reasoning.
+
+### Example 3
+“This band is amazing and their lyrics reflect decades of cultural commentary.”
+
+Label: well_supported  
+Reason: contains evaluative claim plus opinion based thoughts.
+
 ---
 
 # Dataset
