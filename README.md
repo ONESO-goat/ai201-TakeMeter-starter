@@ -396,10 +396,10 @@ This divergence became an important finding itself: for small datasets and nuanc
 # AI Usage Disclosure
 
 
-# LLM
+# LLMs
 
 * ChatGPT (primary helper)
-* Clade
+* Claude
 
 ## Instance 1: Label Stress Testing
 
