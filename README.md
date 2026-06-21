@@ -16,6 +16,9 @@ The project compares:
 
 The goal was to determine whether supervised fine-tuning could outperform a strong prompting-based baseline on this reasoning-quality classification task.
 
+## Training Decisions
+
+The model was trained for the default of **3** epochs. Three epochs were selected because validation accuracy improved consistently through the third epoch while validation loss continued to decrease. Additional epochs were not used or avoided to reduce the risk of overfitting due to the small dataset of 200 examples.
 ---
 
 # Problem Definition
@@ -31,7 +34,7 @@ The classifier predicts one of four labels:
 
 The distinction focuses on argument quality rather than sentiment.
 
-For example:
+Examples:
 
 ---
 ### Emotional
@@ -84,6 +87,17 @@ LABEL_MAP = {
 }
 ```
 
+## Labeling Process
+
+Examples were reviewed (avoid harmful language or malicious behavior) and assigned one of the four labels based on the amount of reasoning provided.
+
+Labeling focused on the distinction between:
+- emotional language without reasoning
+- unsupported claims
+- claims with limited support
+- claims with substantial evidence or multiple supporting points
+
+Borderline examples were reviewed multiple times and compared against the label definitions before a final label was assigned.
 ---
 
 # Dataset
@@ -394,6 +408,23 @@ A notable observation is that confidence scores remained clustered around 0.27�
 
 This supports the idea that the classifier had not learned strong decision boundaries between classes.
 
+# Confidence Calibration Analysis
+
+Confidence scores were grouped into confidence ranges and compared with actual accuracy.
+
+| Confidence Range | Accuracy |
+|------------------|----------|
+| 0.0–0.4 | 50% |
+| 0.4–0.6 | No predictions |
+| 0.6–0.8 | No predictions |
+| 0.8–1.0 | No predictions |
+
+All predictions from the first training run fell within the 0.0–0.4 confidence range. The model never produced medium- or high-confidence predictions.
+
+This finding supports the earlier observation that confidence scores were clustered around 0.27–0.30. The model appeared uncertain across nearly all examples, even when predictions were correct.
+
+Rather than demonstrating meaningful confidence calibration, the results suggest the model had not learned strong decision boundaries and frequently defaulted to low-confidence predictions.
+
 ---
 
 # Reflection: What the Model Learned vs. What I Intended
@@ -432,13 +463,7 @@ The requirement to define edge cases also made it easier to interpret model fail
 
 ## How the Implementation Diverged
 
-The original plan expected the fine-tuned model to outperform the baseline.
-
-Instead, the zero-shot baseline substantially outperformed DistilBERT.
-
-Because of this result, the final project focused more heavily on analyzing why fine-tuning failed rather than demonstrating a successful supervised classifier.
-
-This divergence became an important finding itself: for small datasets and nuanced reasoning tasks, a strong LLM baseline may outperform a traditionally fine-tuned transformer.
+The initial DistilBERT model underperformed the zero-shot baseline. After revising the dataset and retraining, the final model was able to achieve 93.3% accuracy, narrowing the gap with the baseline's 95.0%. As a result, the project shifted from simply comparing performance to understanding how dataset quality and training choices affected model behavior.
 
 ---
 
