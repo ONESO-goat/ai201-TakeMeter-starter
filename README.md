@@ -33,25 +33,74 @@ The distinction focuses on argument quality rather than sentiment.
 
 For example:
 
-**Emotional**
+---
+### Emotional
 
-> "Pop music is garbage."
+* Example 1: “This artist is complete trash.”
+* Example 2: “Rock is literally the greatest genre ever made.”
+  
+---
 
-**Unsupported**
+### Unsupported
 
-> "Billie Eilish fell off."
+* Example 1: “Rock music is for depressed people.”
+* Example 2: “Billie Eilish fell off.”
+
+---
 
 **Weakly Supported**
 
-> "This rapper is declining because his last album debuted lower than previous projects."
+* Example 1: “Travis Scott is popular because of his production style and festival performances.”
+* Example 2: “This band is bad because they haven’t had a hit in years.”
+
+---
 
 **Well Supported**
 
-> "Hip hop evolved through decades of cultural expression, lyrical innovation, and regional influence, shaping global music trends across multiple eras."
+* Example 1: “Hip hop evolved through decades of cultural expression, lyrical innovation, and regional influence, shaping global music trends across multiple eras.”
+* Example 2: “This artist charted on the Billboard Top 40 for multiple consecutive releases, showing sustained commercial success and audience reach.”
+
+---
+### Label Map
+
+```python
+LABEL_MAP = {
+    "unsupported": {
+        "id": 0,
+        "reason": "Makes a claim without evidence or reasoning"
+    },
+    "weakly_supported": {
+        "id": 1,
+        "reason": "Some evidence exists but is incomplete or insufficient"
+    },
+    "well_supported": {
+        "id": 2,
+        "reason": "Clear reasoning and evidence sufficiently support the claim"
+    },
+    "emotional": {
+        "id": 3,
+        "reason": "Primarily expresses emotion, opinion, or sentiment without structured argument"
+    }
+}
+```
 
 ---
 
 # Dataset
+
+## Data size
+
+Total dataset size: **200** examples
+
+| Label            | Count |
+| ---------------- | ----- |
+| emotional        | 50    |
+| unsupported      | 50    |
+| weakly_supported | 50    |
+| well_supported   | 50    |
+| Total            | 200   |
+
+**50** examples each label inside the dataset.
 
 ## Data Sources
 
@@ -435,13 +484,19 @@ The final analysis in this report includes only patterns that were manually veri
 
 The project successfully produced a reasoning-quality classification dataset and evaluated both zero-shot and supervised approaches.
 
-The most significant result was that the zero-shot Groq baseline achieved:
 
-**83.3% accuracy**
+The initial DistilBERT model achieved an accuracy of only
 
-while the fine-tuned DistilBERT model achieved:
+**53.3%**
 
-**53.3% accuracy**
+revealing substantial confusion between unsupported, emotional, and weakly_supported examples. 
+
+After revising the dataset and retraining, the final accuracy the DistilBERT model achieved was
+
+**93.3%** 
+
+compared to 95.0% for the Groq baseline. The analysis of the initial model's failures helped guide these improvements.
+
 
 Error analysis revealed that the fine-tuned model struggled to find the difference between unsupported, weakly_supported, and emotional posts, frequently collapsing predictions into unsupported.
 
